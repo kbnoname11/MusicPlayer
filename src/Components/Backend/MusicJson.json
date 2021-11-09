@@ -1,0 +1,36 @@
+{
+    "URL": "../../assets/a.mp3",
+    "List": [
+        {
+            "id": 1,
+            "song_name": "All Falls Down",
+            "author": "Author",
+            "Length": "Length",
+            "Image": "https://picsum.photos/200",
+            "src": "../../assets/a.mp3"
+        },
+        {
+            "id": 2,
+            "song_name": "Faded",
+            "author": "Author",
+            "Length": "Length",
+            "Image": "https://picsum.photos/200",
+            "src": "../../assets/a.mp3"
+        },
+        {
+            "id": 3,
+            "song_name": "Different Worlds",
+            "author": "Author",
+            "Length": "Length",
+            "Image": "https://picsum.photos/200"
+        },
+        {
+            "id": 4,
+            "song_name": "Darkside",
+            "author": "Author",
+            "Length": "Length",
+            "Image": "https://picsum.photos/200"
+        }
+    ],
+    "statuscode": 200
+}
