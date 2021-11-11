@@ -7,7 +7,7 @@ function Changer() {
   const [ImageUrl, setImageUrl] = useState("");
   const [Myarray, SetMyArray] = useState([]);
   const [srcmp3, setSrcMp3] = useState("");
-
+  var fileReader = new FileReader();
   const Pusher = () => {
     const NewItems = {
       id: Math.floor(Math.random() * 2500000),
@@ -15,6 +15,7 @@ function Changer() {
       author: "Author",
       Length: "12345",
       Image: ImageUrl,
+      //   src: "",
       src: window.URL.createObjectURL(srcmp3),
       //   src: window.URL.createObjectURL(srcmp3),
     };
@@ -44,6 +45,8 @@ function Changer() {
     //   type: myfile.type,
     // });
     setSrcMp3(myfile);
+
+    console.log(srcmp3);
     reader.readAsDataURL(myfile);
     reader.onload = () => {
       //   console.log(reader.result);
