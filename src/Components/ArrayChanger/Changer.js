@@ -15,7 +15,8 @@ function Changer() {
       author: "Author",
       Length: "12345",
       Image: ImageUrl,
-      src: srcmp3,
+      src: window.URL.createObjectURL(srcmp3),
+      //   src: window.URL.createObjectURL(srcmp3),
     };
     SetMyArray([...Myarray, NewItems]);
   };
@@ -33,16 +34,16 @@ function Changer() {
     setFile(e.target.value);
     const myfile = e.target.files[0];
     const reader = new FileReader();
-    // console.log(myfile);
-    setSrcMp3({
-      name: myfile.name,
-      lastModified: myfile.lastModified,
-      lastModifiedDate: myfile.lastModifiedDate,
-      webkitRelativePath: myfile.webkitRelativePath,
-      size: myfile.size,
-      type: myfile.type,
-      Prototype: myfile.Prototype,
-    });
+    console.log(myfile);
+    // setSrcMp3({
+    //   name: myfile.name,
+    //   lastModified: myfile.lastModified,
+    //   lastModifiedDate: myfile.lastModifiedDate,
+    //   webkitRelativePath: myfile.webkitRelativePath,
+    //   size: myfile.size,
+    //   type: myfile.type,
+    // });
+    setSrcMp3(myfile);
     reader.readAsDataURL(myfile);
     reader.onload = () => {
       //   console.log(reader.result);

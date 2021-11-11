@@ -44,7 +44,7 @@ function SampleBody({ song_name, src, Image, id }) {
             Pause
           </button>
         </div>
-        {/* <audio src={Faded} controls={true} /> */}
+        <audio src={src} controls={true} />
       </div>
     </div>
   );
