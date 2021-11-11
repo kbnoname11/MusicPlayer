@@ -3,25 +3,28 @@ import React, { useState } from "react";
 function Test() {
   const [value, setValue] = useState("");
   const [audiomp3, setAudio] = useState(null);
-  const [data, setData] = useState([
-    { id: Math.floor(Math.random() * 2500000), filename: "" },
-  ]);
+  const [data, setData] = useState([]);
   const [file, setfile] = useState(null);
   const PLAYERHANDLER = (e) => {
     setValue(e.target.value);
     const file = e.target.files[0];
+
     setfile(file);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
       setAudio(reader.result);
     };
-    setData([...data, { filename: file }]);
+    setData([...data, file]);
   };
   const audio = new Audio(audiomp3);
   const Player = () => {
-    audio.play();
-    console.log("Playing");
+    if (file === null) {
+      alert("No file Selected");
+    } else {
+      audio.play();
+      console.log("Playing");
+    }
   };
   const Pause = () => {
     audio.pause();
@@ -29,7 +32,16 @@ function Test() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        alignContent: "center",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <input
         type="file"
         value={value}
