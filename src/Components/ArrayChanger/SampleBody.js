@@ -1,8 +1,13 @@
 import React from "react";
+import Faded from "../../assets/Faded.mp3";
 function SampleBody({ song_name, src, Image, id }) {
   return (
     <div
-      style={{ paddingTop: "0px", paddingLeft: "20px", paddingRight: "20px" }}
+      style={{
+        paddingTop: "10px",
+        paddingLeft: "20px",
+        paddingRight: "20px",
+      }}
     >
       <div
         key={id}
@@ -16,14 +21,13 @@ function SampleBody({ song_name, src, Image, id }) {
         <img
           src={Image}
           className="card-img-top"
-          style={{ width: "50px", height: "50px" }}
+          // style={{ width: "50px", height: "50px" }}
           alt="...."
         />
         <div className="card-body">
           <h5 className="card-title" style={{ textAlign: "center" }}>
             {song_name}
           </h5>
-          <h1>{src.name}</h1>
           <button
             // onClick={() => Play_Handler(src)}
             // disabled={btn_arg}
@@ -40,7 +44,7 @@ function SampleBody({ song_name, src, Image, id }) {
             Pause
           </button>
         </div>
-        <audio src={src} controls={true} />
+        {/* <audio src={Faded} controls={true} /> */}
       </div>
     </div>
   );

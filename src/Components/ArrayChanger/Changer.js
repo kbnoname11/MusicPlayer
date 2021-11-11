@@ -77,26 +77,18 @@ function Changer() {
           PUSH
         </button>
       </form>
-
-      {/* <button
-        onClick={() => {
-          SetMyArray([]);
-          localStorage.setItem("MYARRAY", null);
-        }}
-      >
-        Clear
-      </button> */}
       {Myarray.map((items) => {
         const { song_name, id, Image, src } = items;
         return (
-          <SampleBody
-            song_name={song_name}
-            Image={Image}
-            // src={items.src}
-            id={id}
-            key={id}
-            src={src}
-          />
+          <div key={id} className="col">
+            <SampleBody
+              song_name={song_name}
+              Image={Image}
+              id={id}
+              key={id}
+              src={src}
+            />
+          </div>
         );
       })}
     </div>
