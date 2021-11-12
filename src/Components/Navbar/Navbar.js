@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../ArrayChanger/API";
 import Test from "../test/Test";
+import "./Navbar.css";
 function Navbar() {
   return (
     <div>

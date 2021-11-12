@@ -71,15 +71,19 @@ function Index() {
   const audio = new Audio(MP3);
   const Play_Handler = () => {
     if (MP3 === null) {
-      alert("No file Selected");
+      alert("Load the File First");
     } else {
       audio.play();
       console.log("Playing");
     }
   };
   const Pause_Handler = () => {
-    audio.pause();
-    console.log("Pause");
+    if (MP3 === null) {
+      alert("Load the File First");
+    } else {
+      audio.pause();
+      console.log("Pause");
+    }
   };
 
   const Delete_Handler = (id) => {

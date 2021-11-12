@@ -101,6 +101,7 @@ function API() {
           }}
         />
         <input
+          style={{ margin: "10px" }}
           type="text"
           placeholder="Enter Image Url"
           onChange={(e) => {
@@ -108,11 +109,16 @@ function API() {
           }}
         />
         <input
+          style={{ marginLeft: "50px" }}
           type="file"
           name="file"
           onChange={(e) => ChangeHandler(e)}
         ></input>
-        <button type="submit" onClick={(e) => SubmitHandler(e)}>
+        <button
+          className="btn btn-dark"
+          type="submit"
+          onClick={(e) => SubmitHandler(e)}
+        >
           Submit
         </button>
       </form>
