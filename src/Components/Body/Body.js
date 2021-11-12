@@ -1,7 +1,16 @@
 import React from "react";
 
 function Body(props) {
-  const { Name, Play_Handler, Pause_Handler, Image, src, btn_arg } = props;
+  const {
+    Name,
+    Play_Handler,
+    Pause_Handler,
+    Image,
+    src,
+    btn_arg,
+    id,
+    Delete_Handler,
+  } = props;
   return (
     <div
       style={{ paddingTop: "0px", paddingLeft: "20px", paddingRight: "20px" }}
@@ -34,6 +43,13 @@ function Body(props) {
             style={{ margin: "20px" }}
           >
             Pause
+          </button>
+          <button
+            onClick={() => Delete_Handler(id)}
+            className="btn btn-primary"
+            style={{ margin: "20px" }}
+          >
+            Delete
           </button>
         </div>
       </div>
