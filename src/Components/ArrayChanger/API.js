@@ -92,6 +92,7 @@ function API() {
       <form style={{ margin: "20px" }} className="form">
         <input
           type="text"
+          placeholder="Enter Song Name"
           onChange={(e) => {
             if (e.target.value === "" || null) {
               alert("Enter a Name");
@@ -101,6 +102,7 @@ function API() {
         />
         <input
           type="text"
+          placeholder="Enter Image Url"
           onChange={(e) => {
             setImage(e.target.value);
           }}
@@ -115,7 +117,7 @@ function API() {
         </button>
       </form>
 
-      <div className="row">
+      {/* <div className="row">
         {Data.map((items) => {
           const { id, song_name, src, Image } = items;
           return (
@@ -134,7 +136,7 @@ function API() {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }
