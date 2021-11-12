@@ -4,10 +4,12 @@ import Body from "../Body/Body";
 function API() {
   const url = "http://localhost:4000/List";
   const [Data, setData] = useState([]);
+  const [isplaying, setIsPlaying] = useState(true);
+
   const [Name, setName] = useState("");
   const [FileData, setFileData] = useState(null);
   const [btn, setbtn] = useState(false);
-  const [MP3, setMP3] = useState("hello");
+  const [MP3, setMP3] = useState(null);
   const Fileread = async () => {
     const a = await fetch(url);
     const response = await a.json();
@@ -20,7 +22,6 @@ function API() {
 
   const ChangeHandler = (e) => {
     var file = e.target.files;
-    console.log(file);
     const FReader = new FileReader();
     FReader.readAsDataURL(file[0]);
     FReader.onload = (e) => {
@@ -43,13 +44,25 @@ function API() {
       }),
     }).then(window.location.reload());
   };
+  const audioelement = new Audio(MP3);
 
-  const Play_Handler = (src) => {
-    const audioelement = new Audio(MP3);
-
+  const Loader = (src) => {
     setMP3(src);
-    audioelement.play();
-    setbtn(true);
+    console.log(src);
+  };
+
+  const audio = new Audio(MP3);
+  const Play_Handler = () => {
+    if (MP3 === null) {
+      alert("No file Selected");
+    } else {
+      audio.play();
+      console.log("Playing");
+    }
+  };
+  const Pause_Handler = () => {
+    audio.pause();
+    console.log("Pause");
   };
 
   const Delete_Handler = (id) => {
@@ -58,11 +71,6 @@ function API() {
     })
       .then((res) => res.json())
       .then(window.location.reload());
-  };
-
-  const Pause_Handler = () => {
-    console.log("object");
-    setbtn(false);
   };
 
   return (
@@ -94,6 +102,7 @@ function API() {
                 Play_Handler={(src) => Play_Handler(src)}
                 Pause_Handler={(src) => Pause_Handler(src)}
                 Delete_Handler={(id) => Delete_Handler(id)}
+                Loader={(src) => Loader(src)}
                 Image={Image}
                 id={id}
                 src={src}

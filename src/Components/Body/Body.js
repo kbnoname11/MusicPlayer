@@ -10,6 +10,7 @@ function Body(props) {
     btn_arg,
     id,
     Delete_Handler,
+    Loader,
   } = props;
   return (
     <div
@@ -43,6 +44,13 @@ function Body(props) {
             style={{ margin: "20px" }}
           >
             Pause
+          </button>
+          <button
+            onClick={() => Loader(src)}
+            className="btn btn-primary"
+            style={{ margin: "20px" }}
+          >
+            Load
           </button>
           <button
             onClick={() => Delete_Handler(id)}
