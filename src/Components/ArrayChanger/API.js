@@ -5,6 +5,7 @@ function API() {
   const SampleImage =
     "https://i.picsum.photos/id/362/200/200.jpg?hmac=AKqfQ8tnyGapdUtZ1f35ugad3WkJY-g1tn5hi7kF2zY";
   const url = "http://localhost:4000/List";
+  //   const url = "https://api.jsonbin.io/b/618e40604a56fb3dee0dd4e0";
   const [Data, setData] = useState([]);
 
   const [Name, setName] = useState("");
@@ -67,10 +68,11 @@ function API() {
   const audio = new Audio(MP3);
   const Play_Handler = () => {
     if (MP3 === null) {
-      alert("No file Selected");
+      alert("Load the File");
     } else {
       audio.play();
       console.log("Playing");
+      setbtn(true);
     }
   };
   const Pause_Handler = () => {
