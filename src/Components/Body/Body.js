@@ -20,11 +20,17 @@ function Body(props) {
         className="card text-white bg-dark mb-3"
         style={{
           width: "220px",
+          height: "350px",
           display: "flex",
           alignItems: "center",
         }}
       >
-        <img src={Song_Image} className="card-img-top" alt="..." />
+        <img
+          style={{ height: "150px" }}
+          src={Song_Image}
+          className="card-img-top"
+          alt="..."
+        />
         <div className="card-body">
           <h5 className="card-title" style={{ textAlign: "center" }}>
             {Name}
