@@ -5,7 +5,7 @@ function Body(props) {
     Name,
     Play_Handler,
     Pause_Handler,
-    Image,
+    Song_Image,
     src,
     btn_arg,
     id,
@@ -14,27 +14,33 @@ function Body(props) {
   } = props;
   return (
     <div
-      style={{ paddingTop: "0px", paddingLeft: "20px", paddingRight: "20px" }}
+      style={{ paddingTop: "0px", paddingLeft: "10px", paddingRight: "10px" }}
     >
       <div
         className="card text-white bg-dark mb-3"
         style={{
-          width: "210px",
+          width: "220px",
           display: "flex",
           alignItems: "center",
         }}
       >
-        <img src={Image} className="card-img-top" alt="..." />
+        <img src={Song_Image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title" style={{ textAlign: "center" }}>
             {Name}
           </h5>
-
+          <button
+            onClick={() => Loader(src)}
+            className="btn btn-primary"
+            style={{ margin: "20px", width: "70px" }}
+          >
+            Load
+          </button>
           <button
             onClick={() => Play_Handler(src)}
             disabled={btn_arg}
             className="btn btn-primary"
-            style={{ alignSelf: "center" }}
+            style={{ alignSelf: "center", width: "70px" }}
           >
             Play
           </button>
@@ -46,16 +52,10 @@ function Body(props) {
             Pause
           </button>
           <button
-            onClick={() => Loader(src)}
-            className="btn btn-primary"
-            style={{ margin: "20px" }}
-          >
-            Load
-          </button>
-          <button
             onClick={() => Delete_Handler(id)}
+            disabled={btn_arg}
             className="btn btn-primary"
-            style={{ margin: "20px" }}
+            style={{ alignSelf: "center" }}
           >
             Delete
           </button>

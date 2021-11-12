@@ -2,18 +2,26 @@ import React, { useEffect, useState } from "react";
 import axios, { post } from "axios";
 import Body from "../Body/Body";
 function API() {
+  const SampleImage =
+    "https://i.picsum.photos/id/362/200/200.jpg?hmac=AKqfQ8tnyGapdUtZ1f35ugad3WkJY-g1tn5hi7kF2zY";
   const url = "http://localhost:4000/List";
   const [Data, setData] = useState([]);
-  const [isplaying, setIsPlaying] = useState(true);
 
   const [Name, setName] = useState("");
   const [FileData, setFileData] = useState(null);
   const [btn, setbtn] = useState(false);
   const [MP3, setMP3] = useState(null);
+  const [Image, setImage] = useState(null);
+
+  //Fetching the Data from the JSON FILE
   const Fileread = async () => {
     const a = await fetch(url);
     const response = await a.json();
-    setData(response);
+    const abn = response.map((items) => {
+      const { id, song_name, src, Image } = items;
+      return { id, song_name, src, Image };
+    });
+    setData(abn);
   };
 
   useEffect(() => {
@@ -31,7 +39,7 @@ function API() {
 
   const SubmitHandler = (e) => {
     e.preventDefault();
-
+    //SENDING the data in JSON File
     fetch(url, {
       method: "POST",
       headers: {
@@ -41,14 +49,19 @@ function API() {
         song_name: Name,
         id: Math.random() * 12313321323,
         src: FileData,
+        Image: Image,
       }),
     }).then(window.location.reload());
   };
   const audioelement = new Audio(MP3);
 
   const Loader = (src) => {
-    setMP3(src);
-    console.log(src);
+    if (src === null) {
+      alert("Empty File");
+    } else {
+      setMP3(src);
+      console.log(src);
+    }
   };
 
   const audio = new Audio(MP3);
@@ -74,12 +87,21 @@ function API() {
   };
 
   return (
-    <div>
-      <form>
+    <div style={{ margin: "10px" }}>
+      <form style={{ margin: "20px" }} className="form">
         <input
           type="text"
           onChange={(e) => {
+            if (e.target.value === "" || null) {
+              alert("Enter a Name");
+            }
             setName(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          onChange={(e) => {
+            setImage(e.target.value);
           }}
         />
         <input
@@ -92,7 +114,7 @@ function API() {
         </button>
       </form>
 
-      <div>
+      <div className="row">
         {Data.map((items) => {
           const { id, song_name, src, Image } = items;
           return (
@@ -103,7 +125,7 @@ function API() {
                 Pause_Handler={(src) => Pause_Handler(src)}
                 Delete_Handler={(id) => Delete_Handler(id)}
                 Loader={(src) => Loader(src)}
-                Image={Image}
+                Song_Image={Image ? Image : SampleImage}
                 id={id}
                 src={src}
                 btn_arg={btn}
