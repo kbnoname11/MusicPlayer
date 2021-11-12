@@ -68,11 +68,10 @@ function API() {
   const audio = new Audio(MP3);
   const Play_Handler = () => {
     if (MP3 === null) {
-      alert("Load the File");
+      alert("No file Selected");
     } else {
       audio.play();
       console.log("Playing");
-      setbtn(true);
     }
   };
   const Pause_Handler = () => {
