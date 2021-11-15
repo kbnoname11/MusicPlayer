@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Body from "../Body/Body";
 import { SongsArray } from "./SongsArray";
 function Index() {
-  const [pause, setpause] = useState(null);
-  const [btn, setBtn] = useState(false);
+  // const [pause, setpause] = useState(null);
+  // const [btn, setBtn] = useState(false);
 
   const SampleImage =
     "https://i.picsum.photos/id/362/200/200.jpg?hmac=AKqfQ8tnyGapdUtZ1f35ugad3WkJY-g1tn5hi7kF2zY";
@@ -11,11 +11,11 @@ function Index() {
   //   const url = "https://api.jsonbin.io/b/618e40604a56fb3dee0dd4e0";
   const [Data, setData] = useState([]);
 
-  const [Name, setName] = useState("");
-  const [FileData, setFileData] = useState(null);
+  // const [Name, setName] = useState("");
+  // const [FileData, setFileData] = useState(null);
   // const [btn, setbtn] = useState(false);
   const [MP3, setMP3] = useState(null);
-  const [Image, setImage] = useState(null);
+  // const [Image, setImage] = useState(null);
 
   //Fetching the Data from the JSON FILE
   const Fileread = async () => {
@@ -32,39 +32,39 @@ function Index() {
     Fileread();
   }, []);
 
-  const ChangeHandler = (e) => {
-    var file = e.target.files;
-    const FReader = new FileReader();
-    FReader.readAsDataURL(file[0]);
-    FReader.onload = (e) => {
-      setFileData(FReader.result);
-    };
-  };
+  // const ChangeHandler = (e) => {
+  //   var file = e.target.files;
+  //   const FReader = new FileReader();
+  //   FReader.readAsDataURL(file[0]);
+  //   FReader.onload = (e) => {
+  //     setFileData(FReader.result);
+  //   };
+  // };
 
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-    //SENDING the data in JSON File
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        song_name: Name,
-        id: Math.random() * 12313321323,
-        src: FileData,
-        Image: Image,
-      }),
-    }).then(window.location.reload());
-  };
-  const audioelement = new Audio(MP3);
+  // const SubmitHandler = (e) => {
+  //   e.preventDefault();
+  //   //SENDING the data in JSON File
+  //   fetch(url, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       song_name: Name,
+  //       id: Math.random() * 12313321323,
+  //       src: FileData,
+  //       Image: Image,
+  //     }),
+  //   }).then(window.location.reload());
+  // };
+  // const audioelement = new Audio(MP3);
 
   const Loader = (src) => {
     if (src === null) {
       alert("Empty File");
     } else {
       setMP3(src);
-      console.log(src);
+      // console.log(src);
     }
   };
 
@@ -109,7 +109,7 @@ function Index() {
               Song_Image={Image ? Image : SampleImage}
               id={id}
               src={src}
-              btn_arg={btn}
+              // btn_arg={btn}
             />
           </div>
         );
@@ -129,7 +129,7 @@ function Index() {
               Pause_Handler={Pause_Handler}
               Song_Image={Image}
               src={src}
-              btn_arg={btn}
+              // btn_arg={btn}
             />
           </div>
         );
